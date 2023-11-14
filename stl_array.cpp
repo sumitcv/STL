@@ -1,3 +1,17 @@
+/*
+    In C++, the Standard Template Library (STL) provides a container called std::array 
+    that represents a fixed-size array. Unlike the built-in array in C, std::array is a 
+    safer and more convenient alternative because it encapsulates its size and provides 
+    various member functions for easy manipulation.
+    Key points about std::array:
+
+Key points - 
+- It is a fixed-size array, and the size is part of its type (std::array<int, 5> has size 5).
+- Elements can be accessed using the subscript operator ([]), iterators, or a range-based for loop.
+- It provides member functions for common operations, such as front(), back(), begin(), end(), size(), and empty().
+- It performs bounds checking (via at()) similar to std::vector.
+- It does not decay to a pointer in most contexts, providing better safety compared to built-in arrays.
+*/
 
 #include <iostream>
 #include <array>
