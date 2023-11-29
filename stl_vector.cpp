@@ -1,70 +1,51 @@
+#include <vector>
 #include <iostream>
-#include <vector> // Dynamic Array
+/*
+                ~*~ VECTOR ~*~
+ */
 
+/*
+ dynamic Array
+ वेक्टर अपना साइज़ बढ़ाना घटना जानता है, जैसे अगर वेक्टर जितना साइज़ ऐलकेट किया है मान लो उससे जयदा एलेमेंट डाले जा रहे है
+ तो वेक्टर अपने साइज़ के ज़्यादा के element के लिए मेमरी ऐलकेट करेगा उसके बाद सारे एलेमेंट को कॉपी करेगा और पुरानी ऐलकेट की
+ गई मेमरी जको डीऐलकेट कर देगा
+ sinktofit ऑपरेशन का उसे कर के इसकी साइज़ को कम भी कर सकते है।
+ */
 using namespace std;
-
-int main() {
-    // Create a vector with size 5, and all elements initialized to 2
-    vector<int> a(5, 2);
-
-    // Copy all elements from vector 'a' to 'last'
-    vector<int> last(a);
-
-    // Create an empty vector 'v'
+int main()
+{
     vector<int> v;
-
-    // Print initial capacity and size of vector 'v'
-    cout << "capacity size --> " << v.capacity() << endl;
-    cout << "size --> " << v.size() << endl;
-
-    // Add elements to vector 'v' and print capacity and size after each addition
-    v.push_back(2);
-    cout << "capacity size --> " << v.capacity() << endl;
-    cout << "size --> " << v.size() << endl;
-
+    vector<int> va(5,0); // मतलब ५ का वेक्टर बनेगा और 0 से initialize  हो जाएगा [0]->[0]->[0]->[0]->[0]
+    vector<int> vb(va); // copy constructor call kar diya vector ka
+    // check करते है की वेक्टर को कितने साइज़ की मेमरी ऐलकेट की गई है?
+    cout << v.capacity() << endl; // output is : 0 - for 0 element
+    
+    // push the emelent
+    v.push_back(22);
+    cout << v.capacity() << endl; // output is : 1 -  for  1nd element
+    
     v.push_back(33);
-    cout << "capacity size --> " << v.capacity() << endl;
-    cout << "size --> " << v.size() << endl;
-
-    v.push_back(55);
-    cout << "capacity size --> " << v.capacity() << endl;
-    cout << "size --> " << v.size() << endl;
-
-    v.push_back(776);
-    cout << "capacity size --> " << v.capacity() << endl;
-    cout << "size --> " << v.size() << endl;
-
-    // Access elements using 'at' function
-    cout << "3rd position element : " << v.at(2) << endl;
-    cout << "4th position element : " << v.at(3) << endl;
-
-    // Access front and back elements
-    cout << "front element : " << v.front() << endl;
-    cout << "Back element : " << v.back() << endl;
-
-    // Print vector elements before and after pop_back
-    cout << "Before pop " << endl << endl;
-    for (int i : v) {
-        cout << i << "  ";
-    }
-    cout << endl;
-
-    v.pop_back();
-
-    for (int i : v) {
-        cout << i << "  ";
-    }
-    cout << endl;
-
-    // Print size and capacity after pop_back
-    cout << "Array Size : " << v.size() << endl;
-    cout << "Array Capacity : " << v.capacity() << endl;
-
-    // Clear the vector and print size and capacity
+    cout << v.capacity() << endl; // output is : 2 - for  2nd element
+    
+    v.push_back(14);
+    cout << v.capacity() << endl; // output is : 4 - for  3rd element
+    cout << v.size() << endl; // output is : size is 3
+    
+    
+    // to access the array -
+    cout << v.at(1) << endl;
+    cout << v.front() << endl ; // first element
+    cout << v.back() << endl;  // last element
+    for (auto a:v)
+        cout << a << " "  ; // 22  33  14
+    
+    v.pop_back() ;
+    for (auto a:v)
+        cout << a << " "  ; // 22 33
+    
+    // जब वेक्टर को clear  किया जाता है तब वेक्टर इस साइज़ zero होता है capacity नहीं होती है
     v.clear();
-    cout << " after clear " << endl;
-    cout << "Array Size : " << v.size() << endl;
-    cout << "Array Capacity : " << v.capacity() << endl;
-
+    cout  << v.size() << endl; // size 0 हो गया है
+    cout << v.capacity() << endl;// लेकिन capacity अभी भी ४ ही है
     return 0;
 }
